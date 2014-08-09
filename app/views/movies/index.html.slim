@@ -1,0 +1,11 @@
+#movies
+  .row
+    .span12
+      - @movies.each do |movie|
+        .row
+          p.text-info
+            = link_to movie.title, movie_path(movie)
+          p.open_date
+            = movie.open_date
+          p.reviews
+            = movie.reviews.count

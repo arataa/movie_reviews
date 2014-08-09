@@ -1,0 +1,29 @@
+#movie
+  .row
+    .span12
+      h1
+        = @movie.title
+
+      .image
+        = image_tag(@movie.image_url)
+
+      .description
+        = @movie.description
+
+      .derector
+        = @movie.director
+
+      .open_date
+        = @movie.open_date
+
+      .reviews
+        - @movie.reviews.each do |review|
+          p
+            = review.title
+
+          .content
+            = review.content
+          p
+            = review.rating
+          p
+            = review.datetime
