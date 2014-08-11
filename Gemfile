@@ -46,7 +46,11 @@ gem "font-awesome-sass-rails"
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
-gem 'bootswatch-rails'
+gem 'twitter-bootswatch-rails'
+gem 'twitter-bootswatch-rails-helpers'
+
+gem 'kaminari'
+gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

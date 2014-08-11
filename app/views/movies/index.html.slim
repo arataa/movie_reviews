@@ -2,10 +2,31 @@
   .row
     .span12
       - @movies.each do |movie|
+        h2.title
+          = link_to movie.title, movie_path(movie)
         .row
-          p.text-info
-            = link_to movie.title, movie_path(movie)
-          p.open_date
-            = movie.open_date
-          p.reviews
-            = movie.reviews.count
+          .span3.image_small
+            = image_tag movie.image_url
+          .span5
+            .row.description
+              = movie.description
+            .row
+              - r = 0
+              - if movie.reviews.count > 0
+                - r = movie.reviews.inject(0){|sum,c| sum + c.rating}.to_f / movie.reviews.count
+              .rating data-score="#{r / 20.0}"
+
+            .row
+              strong
+                = I18n.t :open_date
+                | :
+              = I18n.l movie.open_date, format: :long
+
+    = paginate @movies
+
+coffee:
+  $('div.rating').raty
+    readOnly: true
+    half: true
+    score: () ->
+      return $(this).attr('data-score')
