@@ -4,26 +4,71 @@
       h1
         = @movie.title
 
-      .image
-        = image_tag(@movie.image_url)
+      .row
+        .span5
+          .image
+            = image_tag(@movie.image_url)
+        .span6
+          .row.description
+            = @movie.description
 
-      .description
-        = @movie.description
+          .row
+            - r = 0
+            - if @movie.reviews.count > 0
+              - r = @movie.reviews.inject(0){|sum,c| sum + c.rating}.to_f / @movie.reviews.count
+            .rating data-score="#{r / 20.0}"
 
-      .derector
-        = @movie.director
+          .row.director
+            strong
+              = I18n.t :director
+              | : 
+            = @movie.director
 
-      .open_date
-        = @movie.open_date
+          .row.actor
+            strong
+              = I18n.t :actor
+              | : 
+            = @movie.actors.map(&:name).join('、')
 
+          .row.open_date
+            strong
+              = I18n.t :open_date
+              | : 
+            = I18n.l @movie.open_date, format: :long
+
+  br
+  .row
+    .span12
       .reviews
-        - @movie.reviews.each do |review|
-          p
-            = review.title
+        - @movie.reviews.each_with_index do |review, i|
+          .row
+            .span5
+              .row
+                = review.content
+              .row
+                - r = @movie.reviews.inject(0){|sum,c| sum + c.rating}.to_f / @movie.reviews.count
+                .rating data-score="#{r / 20.0}"
+              .row
+                = I18n.l review.datetime, format: :short
+                | （ぴあ）
+              br
 
-          .content
-            = review.content
-          p
-            = review.rating
-          p
-            = review.datetime
+            - if @tomato
+              .span5
+                - review = @tomato.reviews[i]
+                .row
+                  = review.content
+                .row
+                  - r = @movie.reviews.inject(0){|sum,c| sum + c.rating}.to_f / @movie.reviews.count
+                  .rating data-score="#{r / 20.0}"
+                .row
+                  = I18n.l review.datetime, format: :short
+                  | （rotten tomatos）
+                br
+
+coffee:
+  $('div.rating').raty
+    readOnly: true
+    half: true
+    score: () ->
+      return $(this).attr('data-score')

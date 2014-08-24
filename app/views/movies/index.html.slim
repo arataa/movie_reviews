@@ -19,14 +19,10 @@
             .row
               strong
                 = I18n.t :open_date
-                | :
+                | : 
               = I18n.l movie.open_date, format: :long
 
     = paginate @movies
 
 coffee:
-  $('div.rating').raty
-    readOnly: true
-    half: true
-    score: () ->
-      return $(this).attr('data-score')
+  $(document).on('page:load', @Movie.ready())

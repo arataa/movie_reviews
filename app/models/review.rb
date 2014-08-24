@@ -4,6 +4,7 @@ class Review
 
   field :title, type: String
   field :rid, type: Integer
+  field :rid_pia, type: Integer
   field :rating, type: Integer
   field :content, type: String
   field :datetime, type: DateTime

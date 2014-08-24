@@ -17,7 +17,7 @@ class Movie
   #attr_accessible :image, :image_cache
 
   embeds_many :reviews
-  #has_and_belongs_to_many :actors
+  has_and_belongs_to_many :actors
   #accepts_nested_attributes_for :actors  
 end
 

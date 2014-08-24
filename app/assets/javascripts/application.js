@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
-//= require turbolinks
 //= require jquery.raty.min
+//= require twitter/bootstrap
+//= require jquery.turbolinks
+//= require turbolinks
 //= require movies
