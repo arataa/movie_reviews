@@ -16,4 +16,5 @@
 //= require twitter/bootstrap
 //= require jquery.turbolinks
 //= require turbolinks
+//= require flat-ui
 //= require movies

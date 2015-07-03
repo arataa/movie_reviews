@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.2.1'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
@@ -35,8 +35,8 @@ gem 'therubyracer', platforms: :ruby
 #
 gem 'jquery-ui-rails'
 
-gem 'slim', '~> 2.0.2', require: 'slim-rails'
-gem 'slim-rails', '~> 2.1.4'
+gem 'slim', '~> 3.0.0', require: 'slim-rails'
+gem 'slim-rails', github: 'ericboehs/slim-rails'
 #
 # for Twitter-Bootstrap
 gem "twitter-bootstrap-rails", git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
@@ -47,11 +47,10 @@ gem "font-awesome-sass-rails"
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
-gem 'twitter-bootswatch-rails'
-gem 'twitter-bootswatch-rails-helpers'
-
 gem 'kaminari'
 gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails'
+
+gem 'flat-ui-sass', github: 'wingrunr21/flat-ui-sass'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
